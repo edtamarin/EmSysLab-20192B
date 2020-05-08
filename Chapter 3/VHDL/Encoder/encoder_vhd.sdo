@@ -1,0 +1,365 @@
+// Copyright (C) 2018  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details.
+
+
+// 
+// Device: Altera EP2AGX45CU17I3 Package UFBGA358
+// 
+
+//
+// This file contains Slow Corner delays for the design using part EP2AGX45CU17I3,
+// with speed grade 3, core voltage 0.9VmV, and temperature 100 Celsius
+//
+
+// 
+// This SDF file should be used for ModelSim-Altera (VHDL) only
+// 
+
+(DELAYFILE
+  (SDFVERSION "2.1")
+  (DESIGN "encoder")
+  (DATE "05/01/2020 17:35:01")
+  (VENDOR "Altera")
+  (PROGRAM "Quartus Prime")
+  (VERSION "Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition")
+  (DIVIDER .)
+  (TIMESCALE 1 ps)
+
+  (CELL
+    (CELLTYPE "arriaii_io_obuf")
+    (INSTANCE \\currentPos\[0\]\~output\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT i (315:315:315) (318:318:318))
+        (IOPATH i o (2561:2561:2561) (2588:2588:2588))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_io_obuf")
+    (INSTANCE \\currentPos\[1\]\~output\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT i (597:597:597) (682:682:682))
+        (IOPATH i o (2551:2551:2551) (2578:2578:2578))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_io_obuf")
+    (INSTANCE \\currentPos\[2\]\~output\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT i (293:293:293) (301:301:301))
+        (IOPATH i o (2465:2465:2465) (2488:2488:2488))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_io_obuf")
+    (INSTANCE \\currentPos\[3\]\~output\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT i (565:565:565) (663:663:663))
+        (IOPATH i o (2445:2445:2445) (2468:2468:2468))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_io_ibuf")
+    (INSTANCE \\clk\~input\\)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH i o (488:488:488) (573:573:573))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_and2")
+    (INSTANCE \\clk\~inputclkctrl\\.outclk_and)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH IN1 Y (354:354:354) (345:345:345))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_lcell_comb")
+    (INSTANCE \\current\[0\]\~0\\)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH datad combout (447:447:447) (400:400:400))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_io_ibuf")
+    (INSTANCE \\rst\~input\\)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH i o (480:480:480) (569:569:569))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_and2")
+    (INSTANCE \\rst\~inputclkctrl\\.outclk_and)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH IN1 Y (354:354:354) (345:345:345))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_io_ibuf")
+    (INSTANCE \\a\~input\\)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH i o (495:495:495) (596:596:596))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE a_prev)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1607:1607:1607) (1645:1645:1645))
+        (PORT asdata (4243:4243:4243) (4320:4320:4320))
+        (PORT clrn (1507:1507:1507) (1470:1470:1470))
+        (IOPATH (posedge clk) q (48:48:48) (48:48:48))
+        (IOPATH (negedge clrn) q (157:157:157) (157:157:157))
+      )
+    )
+    (TIMINGCHECK
+      (SETUP asdata (posedge clk) (81:81:81))
+      (HOLD asdata (posedge clk) (42:42:42))
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_io_ibuf")
+    (INSTANCE \\b\~input\\)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH i o (566:566:566) (662:662:662))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE b_prev)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1607:1607:1607) (1645:1645:1645))
+        (PORT asdata (4193:4193:4193) (4267:4267:4267))
+        (PORT clrn (1507:1507:1507) (1470:1470:1470))
+        (IOPATH (posedge clk) q (48:48:48) (48:48:48))
+        (IOPATH (negedge clrn) q (157:157:157) (157:157:157))
+      )
+    )
+    (TIMINGCHECK
+      (SETUP asdata (posedge clk) (81:81:81))
+      (HOLD asdata (posedge clk) (42:42:42))
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_lcell_comb")
+    (INSTANCE \\ticked\~0\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT datac (224:224:224) (233:233:233))
+        (PORT datad (227:227:227) (235:235:235))
+        (PORT datae (4056:4056:4056) (3977:3977:3977))
+        (PORT dataf (4038:4038:4038) (3966:3966:3966))
+        (IOPATH datac combout (308:308:308) (282:282:282))
+        (IOPATH datad combout (295:295:295) (285:285:285))
+        (IOPATH datae combout (232:232:232) (197:197:197))
+        (IOPATH dataf combout (94:94:94) (79:79:79))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE ticked)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1607:1607:1607) (1645:1645:1645))
+        (PORT d (89:89:89) (94:94:94))
+        (PORT ena (3478:3478:3478) (3848:3848:3848))
+        (IOPATH (posedge clk) q (48:48:48) (48:48:48))
+      )
+    )
+    (TIMINGCHECK
+      (SETUP d (posedge clk) (81:81:81))
+      (SETUP ena (posedge clk) (81:81:81))
+      (HOLD d (posedge clk) (42:42:42))
+      (HOLD ena (posedge clk) (42:42:42))
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE \\current\[0\]\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1774:1774:1774) (1774:1774:1774))
+        (PORT d (89:89:89) (94:94:94))
+        (PORT clrn (1507:1507:1507) (1470:1470:1470))
+        (PORT ena (715:715:715) (822:822:822))
+        (IOPATH (posedge clk) q (48:48:48) (48:48:48))
+        (IOPATH (negedge clrn) q (157:157:157) (157:157:157))
+      )
+    )
+    (TIMINGCHECK
+      (SETUP d (posedge clk) (81:81:81))
+      (SETUP ena (posedge clk) (81:81:81))
+      (HOLD d (posedge clk) (42:42:42))
+      (HOLD ena (posedge clk) (42:42:42))
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_lcell_comb")
+    (INSTANCE \\dir\~0\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (4032:4032:4032) (3959:3959:3959))
+        (PORT dataf (239:239:239) (243:243:243))
+        (IOPATH dataa combout (452:452:452) (457:457:457))
+        (IOPATH dataf combout (94:94:94) (79:79:79))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE dir)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1607:1607:1607) (1645:1645:1645))
+        (PORT d (89:89:89) (94:94:94))
+        (PORT ena (3478:3478:3478) (3848:3848:3848))
+        (IOPATH (posedge clk) q (48:48:48) (48:48:48))
+      )
+    )
+    (TIMINGCHECK
+      (SETUP d (posedge clk) (81:81:81))
+      (SETUP ena (posedge clk) (81:81:81))
+      (HOLD d (posedge clk) (42:42:42))
+      (HOLD ena (posedge clk) (42:42:42))
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_lcell_comb")
+    (INSTANCE \\Add0\~0\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT datad (242:242:242) (247:247:247))
+        (PORT dataf (243:243:243) (242:242:242))
+        (IOPATH datad combout (295:295:295) (285:285:285))
+        (IOPATH datae combout (412:412:412) (378:378:378))
+        (IOPATH dataf combout (94:94:94) (79:79:79))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE \\current\[1\]\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1774:1774:1774) (1774:1774:1774))
+        (PORT d (89:89:89) (94:94:94))
+        (PORT clrn (1507:1507:1507) (1470:1470:1470))
+        (PORT ena (715:715:715) (822:822:822))
+        (IOPATH (posedge clk) q (48:48:48) (48:48:48))
+        (IOPATH (negedge clrn) q (157:157:157) (157:157:157))
+      )
+    )
+    (TIMINGCHECK
+      (SETUP d (posedge clk) (81:81:81))
+      (SETUP ena (posedge clk) (81:81:81))
+      (HOLD d (posedge clk) (42:42:42))
+      (HOLD ena (posedge clk) (42:42:42))
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_lcell_comb")
+    (INSTANCE \\Add0\~1\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT datac (250:250:250) (254:254:254))
+        (PORT datad (269:269:269) (274:274:274))
+        (PORT dataf (259:259:259) (257:257:257))
+        (IOPATH datac combout (295:295:295) (285:285:285))
+        (IOPATH datad combout (308:308:308) (282:282:282))
+        (IOPATH datae combout (412:412:412) (378:378:378))
+        (IOPATH dataf combout (93:93:93) (87:87:87))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE \\current\[2\]\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1774:1774:1774) (1774:1774:1774))
+        (PORT d (89:89:89) (94:94:94))
+        (PORT clrn (1507:1507:1507) (1470:1470:1470))
+        (PORT ena (715:715:715) (822:822:822))
+        (IOPATH (posedge clk) q (48:48:48) (48:48:48))
+        (IOPATH (negedge clrn) q (157:157:157) (157:157:157))
+      )
+    )
+    (TIMINGCHECK
+      (SETUP d (posedge clk) (81:81:81))
+      (SETUP ena (posedge clk) (81:81:81))
+      (HOLD d (posedge clk) (42:42:42))
+      (HOLD ena (posedge clk) (42:42:42))
+    )
+  )
+  (CELL
+    (CELLTYPE "arriaii_lcell_comb")
+    (INSTANCE \\Add0\~2\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT dataa (238:238:238) (236:236:236))
+        (PORT datac (231:231:231) (244:244:244))
+        (PORT datad (264:264:264) (267:267:267))
+        (PORT dataf (255:255:255) (253:253:253))
+        (IOPATH dataa combout (446:446:446) (444:444:444))
+        (IOPATH datac combout (295:295:295) (285:285:285))
+        (IOPATH datad combout (308:308:308) (282:282:282))
+        (IOPATH datae combout (412:412:412) (378:378:378))
+        (IOPATH dataf combout (93:93:93) (87:87:87))
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "dffeas")
+    (INSTANCE \\current\[3\]\\)
+    (DELAY
+      (ABSOLUTE
+        (PORT clk (1774:1774:1774) (1774:1774:1774))
+        (PORT d (89:89:89) (94:94:94))
+        (PORT clrn (1507:1507:1507) (1470:1470:1470))
+        (PORT ena (715:715:715) (822:822:822))
+        (IOPATH (posedge clk) q (48:48:48) (48:48:48))
+        (IOPATH (negedge clrn) q (157:157:157) (157:157:157))
+      )
+    )
+    (TIMINGCHECK
+      (SETUP d (posedge clk) (81:81:81))
+      (SETUP ena (posedge clk) (81:81:81))
+      (HOLD d (posedge clk) (42:42:42))
+      (HOLD ena (posedge clk) (42:42:42))
+    )
+  )
+)
