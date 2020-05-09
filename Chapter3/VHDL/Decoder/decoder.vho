@@ -1,0 +1,1 @@
+/home/edian/Nextcloud/Documents/ESL/Decoderpost/simulation/modelsim/decoder.vho

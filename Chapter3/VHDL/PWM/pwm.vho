@@ -1,0 +1,1 @@
+/home/edian/Nextcloud/Documents/ESL/PWMquartus/simulation/modelsim/pwm.vho
