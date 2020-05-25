@@ -1,3 +1,9 @@
+/**
+ * Processing images from a webcam and detecting coordinates of shapes
+ * Author: Egor Tamarin
+ * May 2020
+ */
+
 #include <stdio.h>
 #include <string>
 #include <cmath>
@@ -15,7 +21,7 @@ Point getCenterPoint(cv::Mat& im, std::vector<cv::Point>& contour){
     Rect r = boundingRect(contour);
     Point pt(r.x + ((r.width) / 2), r.y + ((r.height) / 2));
     // draw a small circle at the center of the contour
-    circle(im,pt,3,Scalar(0,0,255),-1);
+    circle(im,pt,3,CV_RGB(0,0,255),-1);
     return pt;
 }
 
@@ -27,14 +33,12 @@ int main(int argc, char *argv[]){
         string width = argv[2];
         string height = argv[3];
         string numFrames = argv[4];
-        int blocksize = stoi(width)*stoi(height)*3;
-        string gst_pipe = "v4l2src device="+device+" blocksize="+to_string(blocksize)+
-            " num_buffers="+numFrames+
-            " ! image/jpeg,framerate=30/1,width="+width+",height="+height+
-            " ! appsink";
-        cout << "Initialing GStreamer with pipeline:" << endl;
-        cout << gst_pipe << endl;
-        VideoCapture gst_cap(0);
+        cout << "Initializing capture with parameters:" << endl;
+        cout << "Device: " << device << ", frame size: " << width << "x" << height << endl;
+        VideoCapture gst_cap(device);
+        // set capture properties
+        gst_cap.set(CAP_PROP_FRAME_WIDTH,stoi(width));
+        gst_cap.set(CAP_PROP_FRAME_HEIGHT,stoi(height));
         if (!gst_cap.isOpened()){
             cout << "ERROR: Can't create capture!" << endl;
             return -1;
@@ -49,30 +53,39 @@ int main(int argc, char *argv[]){
             gst_cap >> frame;
             if (frame.empty()) break;
             // grayscale image
-            //Mat grayFrame;
-            //cvtColor(frame,grayFrame, COLOR_RGB2GRAY );
+            Mat grayFrame;
+            cvtColor(frame,grayFrame, COLOR_RGB2GRAY );
             // use Canny edge detection to detect contours
             Mat cannyFrame;
-            Canny(frame,cannyFrame,0,50,5);
+            Canny(grayFrame,cannyFrame,100,200);
             vector<vector<Point>> contours;
             vector<Point> approx;
+            // clone frame to modify it
             Mat dst = frame.clone();
+            // find contrours in an image
             findContours(cannyFrame.clone(), contours, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
-            //cout << "Detected contours: " << contours.size() << endl;
+            cout << "Frame " << framenum << ": Detected contours: " << contours.size() << endl;
+            cv::String coords = "";
+            // iterate over contours
             for (int i = 0; i < contours.size(); i++){
                 // approximate contours and discard small/convex
                 approxPolyDP(Mat(contours[i]), approx, arcLength(Mat(contours[i]), true)*0.02, true);
                 if (std::fabs(cv::contourArea(contours[i])) < 100 || !cv::isContourConvex(approx))
                     continue;
                 int vertices = approx.size();
-                // detect squares
+                Point detected = getCenterPoint(dst, contours[i]);
+                // detect shapes based on the amount of vertices
                 if (vertices == 4){
                     // mark the coordinates on a frame and write an image
-                    Point detected = getCenterPoint(dst, contours[i]);
-                    //imwrite("det_"+to_string(detected.x)+"_"+to_string(detected.y)+".jpg",dst);
-                    cout << "Frame " << framenum << ": Detected shape at (" << detected.x << " " << detected.x << ")" << endl;
+                    coords += "("+to_string(detected.x)+" "+to_string(detected.y)+") ";
+                    cout << "      " << framenum << ": Detected square shape at (" << detected.x << " " << detected.x << ")" << endl;
+                }else if (vertices == 3){
+                    cout << "      " << framenum << ": Detected triangle shape at (" << detected.x << " " << detected.x << ")" << endl;
                 }
             }
+            // print the coordinates on the frame and write it
+            putText(dst,coords,Point(10,50),FONT_HERSHEY_DUPLEX,0.75,CV_RGB(0,0,0),2);
+            imwrite("det_"+to_string(framenum)+".jpg",dst);
             framenum++;
         }
         return 0;
