@@ -12,22 +12,35 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/opencv.hpp>
 #include "PID.h"
+#include "Motor.h"
 
 using namespace std;
 using namespace cv;
 
 // PID coefficients, tuned manually
-double kP = 0.6; 
-double kI = 0.1; 
-double kD = 0.005;
-double dt = 0.033; // 1 frame time
-double pidLimitMin = 0;
-double pidLimitMax = 0;
+double kP = 3;
+double kI = 0.2; 
+double kD = 0.025; 
+double dt = 0.033;
+double pidLimitMin = -5.0;
+double pidLimitMax = 5.0;
+
+// Motor model parameters
+float J = 0.01;
+float b = 0.1;
+float K = 0.1;
+float R = 2;
+float L = 0.5;
+float T = 0.1;
 
 // PID controllers for X and Y movement
 // Motors are assumed to be similar
 PIDController pidHoriz = PIDController(dt,kP,kI,kD,pidLimitMax,pidLimitMin);
 PIDController pidVert = PIDController(dt,kP,kI,kD,pidLimitMax,pidLimitMin);
+
+//Motors for pan and tilt
+Motor horizMotor = Motor(J,b,K,R,L,T);
+Motor vertMotor = Motor(J,b,K,R,L,T);
 
 /**
  * Get the center of a contour
@@ -55,7 +68,7 @@ Point getCentroid(Mat im, vector<Point> features){
     // mean of coordinates is centroid
     int centX = round(sumX/numFeatures);
     int centY = round(sumY/numFeatures);
-    Point centroid = Point(centX,centY);
+    Point2f centroid = Point2f(centX,centY);
     // draw the point on the image and return
     circle(im,centroid,3,CV_RGB(0,0,0),-1);
     return centroid;
@@ -64,20 +77,26 @@ Point getCentroid(Mat im, vector<Point> features){
 /**
  * Calculate how the camera should move
  * */
-Point moveCamera(Mat im, Point setpoint, Point value){
+Point2f moveCamera(Mat im, Point2f setpoint, Point2f value){
     cv::String coords = "";
-    double xMove = pidHoriz.calculate(setpoint.x,value.x);
-    double yMove = pidVert.calculate(setpoint.y,value.y);
-    cout << "=== PID OFFSET (" << round(xMove) << " " << round(yMove) << ") ===" << endl;
+    float speedX = (setpoint.x-value.x)/0.5;
+    float speedY = (setpoint.y-value.y)/0.5;
+    float xMove = pidHoriz.calculate(speedX,horizMotor.vel);
+    float yMove = pidVert.calculate(speedY,vertMotor.vel);
+    horizMotor.vel = horizMotor.run(xMove/0.476);
+    vertMotor.vel = vertMotor.run(yMove/0.476);
+    cout << "=== SPEED (" << horizMotor.vel << " " << vertMotor.vel << ") ===" << endl;
     // simulate camera movement
-    Point newTarget = Point(value.x+round(xMove),value.y+round(yMove));
+    Point2f newTarget = Point2f(value.x+horizMotor.vel,value.y+vertMotor.vel);
     cout << "=== CAM TARGET (" << newTarget.x << " " << newTarget.y << ") ===" << endl;
+    /* 
     // print the coordinates on the frame and write it
     coords = "(" + to_string(setpoint.x) + " " + to_string(setpoint.y) + 
         ") (" + to_string(newTarget.x) + " " + to_string(newTarget.y) + 
         ") ("+ to_string((int)round(xMove)) + " " + to_string((int)round(yMove)) + ")";
     // put setpoint, target and PID offset on frame
     putText(im,coords,Point(10,50),FONT_HERSHEY_DUPLEX,0.75,CV_RGB(0,0,0),2);
+    */
     return newTarget;
 }
 
@@ -86,6 +105,7 @@ int main(int argc, char *argv[]){
         printf("Usage: <device> <width> <height> <number of frames>");
     }else{
         // user input
+        cout.precision(3);
         string device = argv[1];
         string width = argv[2];
         string height = argv[3];
@@ -93,7 +113,7 @@ int main(int argc, char *argv[]){
         cout << "Initializing capture with parameters:" << endl;
         cout << "Device: " << device << ", frame size: " << width << "x" << height << endl;
         VideoCapture gst_cap(device);
-        VideoWriter video("demo.avi",CV_FOURCC('M','J','P','G'),30,Size(stoi(width),stoi(height)));
+        VideoWriter video("demo.avi",CV_FOURCC('M','J','P','G'),10,Size(stoi(width),stoi(height)));
         // set capture properties
         gst_cap.set(CAP_PROP_FRAME_WIDTH,stoi(width));
         gst_cap.set(CAP_PROP_FRAME_HEIGHT,stoi(height));
@@ -106,7 +126,7 @@ int main(int argc, char *argv[]){
         Mat frame;
         int framenum = 1;
         // camera starts pointed at the center of the frame
-        Point cameraTarget = Point(stoi(width)/2,stoi(height)/2);
+        Point2f cameraTarget = Point2f(stoi(width)/2,stoi(height)/2);
 
         // run for a determined number of frames
         while (framenum < stoi(numFrames)){
@@ -115,9 +135,12 @@ int main(int argc, char *argv[]){
             // grayscale image
             Mat grayFrame;
             cvtColor(frame,grayFrame, COLOR_RGB2GRAY );
+            // thresholding
+            Mat threshFrame;
+            threshold(grayFrame,threshFrame,100,255,cv::THRESH_BINARY_INV);
             // use Canny edge detection to detect contours
             Mat cannyFrame;
-            Canny(grayFrame,cannyFrame,100,200);
+            Canny(threshFrame,cannyFrame,100,200);
             //imwrite("can_"+to_string(framenum)+".jpg",cannyFrame);
             vector<vector<Point>> contours;
             vector<Point> approx;
@@ -145,8 +168,9 @@ int main(int argc, char *argv[]){
                 }
             }
             // find centroid
-            Point featureCenter = getCentroid(dst,featureCoords);
+            Point2f featureCenter = getCentroid(dst,featureCoords);
             cout << "      " << framenum << ": Centroid at (" << featureCenter.x << " " << featureCenter.y << ")" << endl;
+            cout << "      " << framenum << ": Old trgt at (" << cameraTarget.x << " " << cameraTarget.y << ")" << endl;
             // move the camera
             cameraTarget = moveCamera(dst, featureCenter,cameraTarget);
             // draw a line along the movement
@@ -154,7 +178,7 @@ int main(int argc, char *argv[]){
             // indicate the target (where the camera is pointing at)
             circle(dst,cameraTarget,5,CV_RGB(255,0,0),1);
             // write frame
-            //imwrite("det_"+to_string(framenum)+".jpg",dst);
+            //imwrite("det_"+to_string(framenum)+".jpg",threshFrame);
             video.write(dst);
             framenum++;
         }
