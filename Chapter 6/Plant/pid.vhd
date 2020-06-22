@@ -7,11 +7,11 @@ entity pid is
         kp      :   IN  std_logic;
         ki      :   IN  std_logic;
         kd      :   IN  std_logic;
-        input   :   IN  std_logic_vector(7 downto 0);
+        pid_in  :   IN  std_logic_vector(7 downto 0);
         feedback:   IN  std_logic_vector(7 downto 0);
         rst     :   IN  std_logic;
         clk     :   IN  std_logic;
-        output  :   OUT std_logic_vector(7 downto 0)
+        pid_out  :   OUT std_logic_vector(7 downto 0)
     );
 end pid;
 
@@ -30,7 +30,7 @@ signal previous_feedback : std_logic_vector(7 downto 0);
 constant timedivisor : integer := 1;
 
 begin
-    process(kp, kd, ki, clk, rst, feedback, error, input, p, i, d)
+    process(kp, kd, ki, clk, rst, feedback, error, pid_in, p, i, d)
     begin
         if rising_edge(clk) then
             if rst = '0' then
@@ -41,12 +41,12 @@ begin
                 i <= 0;
                 d <= 0;
                 output_loaded <= 0;
-                output <= (others => '0');
+                pid_out <= (others => '0');
             else
                 for k in 0 to 8 loop
                     case k is
                         when 0 => 
-                            error <= (to_integer(unsigned(input)) - to_integer(unsigned(feedback)));
+                            error <= (to_integer(unsigned(pid_in)) - to_integer(unsigned(feedback)));
                         when 1 => 
                             if feedback /= previous_feedback then
                                 error_sum <= error_sum + error;
@@ -81,7 +81,7 @@ begin
                                 output_loaded <= output_saturation_buffer;
                             end if;
                         when 7 =>
-                            output <= std_logic_vector(to_unsigned(output_loaded, 12));
+                            pid_out <= std_logic_vector(to_unsigned(output_loaded, 12));
                         when 8 =>
                             previous_feedback <= feedback;
                             previous_error <= error;
