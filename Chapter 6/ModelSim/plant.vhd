@@ -103,8 +103,6 @@ architecture struct of plant is
     signal spI: real := 0.0;
     signal pulseI,posI: integer := 0;
     signal fb: std_logic_vector(resolution-1 downto 0);
-    signal pos: std_logic_vector(resolution-1 downto 0);
-    signal motorin: std_logic_vector(resolution downto 0);
 
     signal kp:          std_logic := '1';
     signal ki:          std_logic := '0';

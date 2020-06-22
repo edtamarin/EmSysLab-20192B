@@ -16,6 +16,15 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity pwm
 -- Compiling architecture arch of pwm
 
+} {} {}} {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pid.vhd} {1 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pid.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity pid
+-- Compiling architecture rtl of pid
+
 } {} {}} {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/wheel.vhd} {1 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/wheel.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
@@ -77,15 +86,5 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package std_logic_1164
 -- Compiling entity plant_stim
 -- Compiling architecture behav of plant_stim
-
-} {} {}} {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant.vhd} {2 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity plant
--- Compiling architecture struct of plant
-** Warning: /home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant.vhd(125): (vcom-1191) Type conversion on actual associated with formal "vIn" must be a constrained array subtype.
 
 } {} {}}
