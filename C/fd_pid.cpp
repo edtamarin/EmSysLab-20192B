@@ -45,11 +45,16 @@ Motor vertMotor = Motor(J,b,K,R,L,T);
 /**
  * Get the center of a contour
  */
-Point getCenterPoint(cv::Mat& im, std::vector<cv::Point>& contour){
+Point getCenterPoint(cv::Mat& im, std::vector<cv::Point>& contour, int type){
     Rect r = boundingRect(contour);
     Point pt(r.x + ((r.width) / 2), r.y + ((r.height) / 2));
     // draw a small circle at the center of the contour
-    circle(im,pt,3,CV_RGB(0,0,255),-1);
+    if (type == 0){ // good shape
+        circle(im,pt,3,CV_RGB(0,255,0),-1);
+    }else if (type==1){ // bad shape
+        circle(im,pt,3,CV_RGB(255,0,0),-1);
+    }
+    
     return pt;
 }
 
@@ -70,7 +75,7 @@ Point getCentroid(Mat im, vector<Point> features){
     int centY = round(sumY/numFeatures);
     Point2f centroid = Point2f(centX,centY);
     // draw the point on the image and return
-    circle(im,centroid,3,CV_RGB(0,0,0),-1);
+    circle(im,centroid,3,CV_RGB(0,0,255),-1);
     return centroid;
 }
 
@@ -102,7 +107,7 @@ Point2f moveCamera(Mat im, Point2f setpoint, Point2f value){
 
 int main(int argc, char *argv[]){
     if (argc != 5){
-        printf("Usage: <device> <width> <height> <number of frames>");
+        printf("Usage: <capture device> <frame width> <frame height> <number of frames>\n");
     }else{
         // user input
         cout.precision(3);
@@ -135,13 +140,14 @@ int main(int argc, char *argv[]){
             // grayscale image
             Mat grayFrame;
             cvtColor(frame,grayFrame, COLOR_RGB2GRAY );
+            imwrite("gray_"+to_string(framenum)+".jpg",grayFrame);
             // thresholding
             Mat threshFrame;
             threshold(grayFrame,threshFrame,100,255,cv::THRESH_BINARY_INV);
             // use Canny edge detection to detect contours
             Mat cannyFrame;
             Canny(threshFrame,cannyFrame,100,200);
-            //imwrite("can_"+to_string(framenum)+".jpg",cannyFrame);
+            imwrite("can_"+to_string(framenum)+".jpg",cannyFrame);
             vector<vector<Point>> contours;
             vector<Point> approx;
             // clone frame to modify it
@@ -157,18 +163,20 @@ int main(int argc, char *argv[]){
                 if (std::fabs(cv::contourArea(contours[i])) < 100 || !cv::isContourConvex(approx))
                     continue;
                 int vertices = approx.size();
-                Point detected = getCenterPoint(dst, contours[i]);
                 // detect shapes based on the amount of vertices
                 if (vertices == 4){
                     // mark the coordinates on a frame and write an image
+                    Point detected = getCenterPoint(dst, contours[i],1);
                     cout << "      " << framenum << ": Detected square shape at (" << detected.x << " " << detected.y << ")" << endl;
                     featureCoords.push_back(detected);
                 }else if (vertices == 3){
+                    Point detected = getCenterPoint(dst, contours[i],0);
                     cout << "      " << framenum << ": Detected triangle shape at (" << detected.x << " " << detected.y << ")" << endl;
                 }
             }
             // find centroid
             Point2f featureCenter = getCentroid(dst,featureCoords);
+            imwrite("mark_"+to_string(framenum)+".jpg",dst);
             cout << "      " << framenum << ": Centroid at (" << featureCenter.x << " " << featureCenter.y << ")" << endl;
             cout << "      " << framenum << ": Old trgt at (" << cameraTarget.x << " " << cameraTarget.y << ")" << endl;
             // move the camera
