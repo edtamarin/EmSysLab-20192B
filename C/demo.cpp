@@ -98,8 +98,8 @@ Point2f moveCamera(Mat im, Point2f setpoint, Point2f value){
 }
 
 int main(int argc, char *argv[]){
-    if (argc != 5){
-        printf("Usage: <capture device> <frame width> <frame height> <number of frames>\n");
+    if (argc != 6){
+        printf("Usage: <capture device> <frame width> <frame height> <number of frames> <output video FPS>\n");
     }else{
         // user input
         cout.precision(3);
@@ -107,10 +107,11 @@ int main(int argc, char *argv[]){
         string width = argv[2];
         string height = argv[3];
         string numFrames = argv[4];
+        int fps = stoi(argv[5]);
         cout << "Initializing capture with parameters:" << endl;
         cout << "Device: " << device << ", frame size: " << width << "x" << height << endl;
         VideoCapture gst_cap(device);
-        VideoWriter video("demo.avi",CV_FOURCC('M','J','P','G'),10,Size(stoi(width),stoi(height)));
+        VideoWriter video("demo.avi",CV_FOURCC('M','J','P','G'),fps,Size(stoi(width),stoi(height)));
         // set capture properties
         gst_cap.set(CAP_PROP_FRAME_WIDTH,stoi(width));
         gst_cap.set(CAP_PROP_FRAME_HEIGHT,stoi(height));
@@ -165,9 +166,16 @@ int main(int argc, char *argv[]){
                 }
             }
             // find centroid
-            Point2f featureCenter = getCentroid(dst,featureCoords);
-            cout << "      " << framenum << ": Centroid at (" << featureCenter.x << " " << featureCenter.y << ")" << endl;
-            cout << "      " << framenum << ": Old trgt at (" << cameraTarget.x << " " << cameraTarget.y << ")" << endl;
+            Point2f featureCenter;
+            if (featureCoords.size() > 0){
+                featureCenter = getCentroid(dst,featureCoords);
+                cout << "      " << framenum << ": Centroid at (" << featureCenter.x << " " << featureCenter.y << ")" << endl;
+                cout << "      " << framenum << ": Old trgt at (" << cameraTarget.x << " " << cameraTarget.y << ")" << endl;
+            }else{
+                cout << "=== NO BAD PARTS FOUND ===" << endl;
+                // reset cam to center
+                featureCenter = Point2f(stoi(width)/2,stoi(height)/2);
+            }
             // move the camera
             cameraTarget = moveCamera(dst, featureCenter,cameraTarget);
             // draw a line along the movement
