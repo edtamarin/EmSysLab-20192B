@@ -1,0 +1,91 @@
+{/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/encoder.vhd} {1 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/encoder.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity encoder
+-- Compiling architecture behaviour of encoder
+
+} {} {}} {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pwm.vhd} {1 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pwm.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity pwm
+-- Compiling architecture arch of pwm
+
+} {} {}} {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/wheel.vhd} {1 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/wheel.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity wheel
+-- Compiling architecture behav of wheel
+
+} {} {}} {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor_stim.vhd} {1 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor_stim.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity motor_stim
+-- Compiling architecture behav of motor_stim
+
+} {} {}} {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor.vhd} {1 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity motor
+-- Compiling architecture behav of motor
+
+} {} {}} {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pwmdecoder.vhd} {1 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pwmdecoder.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Compiling entity pwmdecoder
+-- Compiling architecture rtl of pwmdecoder
+
+} {} {}} {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor_tb.vhd} {1 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor_tb.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity motor_tb
+-- Compiling architecture struct of motor_tb
+
+} {} {}} {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/decoder.vhd} {1 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/decoder.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity decoder
+-- Compiling architecture behav of decoder
+
+} {} {}} {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant_stim.vhd} {1 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant_stim.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity plant_stim
+-- Compiling architecture behav of plant_stim
+
+} {} {}} {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant.vhd} {2 {vcom -work work -2002 -explicit -stats=none {/home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity plant
+-- Compiling architecture struct of plant
+** Warning: /home/edian/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant.vhd(125): (vcom-1191) Type conversion on actual associated with formal "vIn" must be a constrained array subtype.
+
+} {} {}}

@@ -1,0 +1,13 @@
+# Compile of decoder.vhd was successful.
+# Compile of encoder.vhd was successful.
+# Compile of motor.vhd was successful.
+# Compile of motor_stim.vhd was successful.
+# Compile of motor_tb.vhd was successful.
+# Compile of pid.vhd was successful with warnings.
+# Compile of plant.vhd was successful with warnings.
+# Compile of plant_stim.vhd was successful.
+# Compile of pwm.vhd was successful.
+# Compile of pwmdecoder.vhd was successful.
+# Compile of wheel.vhd was successful.
+# 11 compiles, 0 failed with no errors.
+vsim -gui -l /dev/null work.plant(struct)
