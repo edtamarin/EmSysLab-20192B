@@ -83,7 +83,7 @@ Point getCentroid(Mat im, vector<Point> features){
  * Calculate how the camera should move
  * */
 Point2f moveCamera(Mat im, Point2f setpoint, Point2f value){
-    cv::String coords = "";
+    // initial speeds
     float speedX = (setpoint.x-value.x)/0.5;
     float speedY = (setpoint.y-value.y)/0.5;
     float xMove = pidHoriz.calculate(speedX,horizMotor.vel);
