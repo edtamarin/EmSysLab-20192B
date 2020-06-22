@@ -88,20 +88,12 @@ Point2f moveCamera(Mat im, Point2f setpoint, Point2f value){
     float speedY = (setpoint.y-value.y)/0.5;
     float xMove = pidHoriz.calculate(speedX,horizMotor.vel);
     float yMove = pidVert.calculate(speedY,vertMotor.vel);
+    // simulate camera movement
     horizMotor.vel = horizMotor.run(xMove/0.476);
     vertMotor.vel = vertMotor.run(yMove/0.476);
     cout << "=== SPEED (" << horizMotor.vel << " " << vertMotor.vel << ") ===" << endl;
-    // simulate camera movement
     Point2f newTarget = Point2f(value.x+horizMotor.vel,value.y+vertMotor.vel);
     cout << "=== CAM TARGET (" << newTarget.x << " " << newTarget.y << ") ===" << endl;
-    /* 
-    // print the coordinates on the frame and write it
-    coords = "(" + to_string(setpoint.x) + " " + to_string(setpoint.y) + 
-        ") (" + to_string(newTarget.x) + " " + to_string(newTarget.y) + 
-        ") ("+ to_string((int)round(xMove)) + " " + to_string((int)round(yMove)) + ")";
-    // put setpoint, target and PID offset on frame
-    putText(im,coords,Point(10,50),FONT_HERSHEY_DUPLEX,0.75,CV_RGB(0,0,0),2);
-    */
     return newTarget;
 }
 
@@ -140,14 +132,12 @@ int main(int argc, char *argv[]){
             // grayscale image
             Mat grayFrame;
             cvtColor(frame,grayFrame, COLOR_RGB2GRAY );
-            imwrite("gray_"+to_string(framenum)+".jpg",grayFrame);
             // thresholding
             Mat threshFrame;
             threshold(grayFrame,threshFrame,100,255,cv::THRESH_BINARY_INV);
             // use Canny edge detection to detect contours
             Mat cannyFrame;
             Canny(threshFrame,cannyFrame,100,200);
-            imwrite("can_"+to_string(framenum)+".jpg",cannyFrame);
             vector<vector<Point>> contours;
             vector<Point> approx;
             // clone frame to modify it
@@ -176,7 +166,6 @@ int main(int argc, char *argv[]){
             }
             // find centroid
             Point2f featureCenter = getCentroid(dst,featureCoords);
-            imwrite("mark_"+to_string(framenum)+".jpg",dst);
             cout << "      " << framenum << ": Centroid at (" << featureCenter.x << " " << featureCenter.y << ")" << endl;
             cout << "      " << framenum << ": Old trgt at (" << cameraTarget.x << " " << cameraTarget.y << ")" << endl;
             // move the camera
@@ -186,7 +175,6 @@ int main(int argc, char *argv[]){
             // indicate the target (where the camera is pointing at)
             circle(dst,cameraTarget,5,CV_RGB(255,0,0),1);
             // write frame
-            //imwrite("det_"+to_string(framenum)+".jpg",threshFrame);
             video.write(dst);
             framenum++;
         }
