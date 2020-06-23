@@ -17,12 +17,12 @@ end pid;
 
 architecture rtl of pid is
     
-    constant con_Kp :   integer := 5; --Proportional value
+    constant con_Kp : integer := 20; --Proportional value
     constant con_kp_den : integer := 2; --Constant
+    constant con_Ki : integer := 2; --Integral value
+    constant con_ki_den : integer := 10; --Constant
     constant con_Kd : integer := 1; --Derivative value
     constant con_kd_den : integer := 100; --Constant
-    constant con_Ki : integer := 1; --Integral value
-    constant con_ki_den : integer := 10; --Constant
     signal error, error_difference, error_sum, previous_error : integer := 0;
     signal p, i, d : integer := 0;
     signal output_loaded, output_saturation_buffer : integer := 0;
@@ -73,7 +73,9 @@ architecture rtl of pid is
                         when 5 =>
                             output_saturation_buffer <= (p + i + d);
                         when 6 =>
-                            if output_saturation_buffer < 0 then
+                            if kp = '0' and ki = '0' and kd = '0' then
+                                output_loaded <= to_integer(unsigned(pid_in));
+                            elsif output_saturation_buffer < 0 then
                                 output_loaded <= 0;
                             elsif output_saturation_buffer > 255 then
                                 output_loaded <= 255;

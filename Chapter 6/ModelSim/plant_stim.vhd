@@ -31,16 +31,7 @@ begin
     
         D <= "11000000";
     
-        for I in 0 to 50000000 loop
-          clk <= '0';
-          wait for 10 ns;
-          clk <= '1';
-          wait for 10 ns;
-        end loop;
-    
-        D <= "10000000";
-    
-        for I in 0 to 50000000 loop
+        for I in 0 to 10000000 loop
           clk <= '0';
           wait for 10 ns;
           clk <= '1';

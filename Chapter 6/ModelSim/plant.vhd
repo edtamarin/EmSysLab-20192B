@@ -55,10 +55,13 @@ architecture struct of plant is
             K: real := 0.1;
             R: real := 2.0;
             L: real := 0.5;
-            dT: integer := 10);
+            dT: integer := 10
+        );
         -- I/O
         port(vIn: in unsigned;
-            speed: out real);
+            speed: out real;
+            pidspeed: out std_logic_vector(7 downto 0)
+        );
     end component;
     component wheel is
         generic (turnScale: real := 4.0);
@@ -104,7 +107,7 @@ architecture struct of plant is
     signal pulseI,posI: integer := 0;
     signal fb: std_logic_vector(resolution-1 downto 0);
 
-    signal kp:          std_logic := '1';
+    signal kp:          std_logic := '0';
     signal ki:          std_logic := '0';
     signal kd:          std_logic := '0';
     signal rst:         std_logic := '1';
@@ -120,7 +123,7 @@ begin
     pwmDec: pwmdecoder
         port map(clkI, rstI, pwmI, dirI, pwI);
     mot: motor
-        port map(unsigned(pwI), spI);
+        port map(unsigned(pwI), spI, fb);
     whl: wheel
         generic map(turnScale => 50000000.0)
         port map(spI, clkI, pulseI, decRstI);
@@ -130,5 +133,4 @@ begin
     enc: encoder
         port map(aI, bI, rstI, clkI, posI, dirOutI);
     position <= posI;
-    fb <= std_logic_vector(to_unsigned(posI, fb'length));
 end struct;

@@ -11,10 +11,13 @@ entity motor is
         K: real := 0.1;
         R: real := 2.0;
         L: real := 0.5;
-        dT: integer := 10);
+        dT: integer := 10
+    );
     -- I/O
     port(vIn: in unsigned;
-        speed: out real);
+        speed: out real;
+        pidspeed: out std_logic_vector(7 downto 0)
+    );
 end motor;
 
 architecture behav of motor is
@@ -37,7 +40,7 @@ architecture behav of motor is
 begin
     clkI <= not clkI after dT*ms;
     process(clkI)
-        variable V,I,S,SK,IK,prevI,prevS : real := 0.0;
+        variable V,I,S,SK,IK,prevI,prevS,speedconv : real := 0.0;
         variable init: std_logic := '0';
     begin
         -- calculate current
@@ -51,6 +54,11 @@ begin
         -- update variables
         prevI := I;
         prevS := S;
-        speed <= S;
+
+	speedconv := S * 256.0 * 0.476;
+        
+	speed <= S;
+	
+        pidspeed <= std_logic_vector(to_unsigned(integer(speedconv), pidspeed'length));
     end process;
 end behav;
