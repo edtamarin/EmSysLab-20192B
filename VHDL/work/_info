@@ -1,0 +1,482 @@
+m255
+K4
+z2
+!s11e MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+d/home/edian
+Edecoder
+Z0 w1592815685
+Z1 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z2 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 969
+Z3 dC:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim
+Z4 8C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/decoder.vhd
+Z5 FC:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/decoder.vhd
+l0
+L6 1
+V9Q:d;@M8DY8CJV4h;0lKz3
+!s100 HkRoncU7`Ld:0Z[K7fE2D3
+Z6 OV;C;2020.1;71
+32
+Z7 !s110 1592919496
+!i10b 1
+Z8 !s108 1592919496.000000
+Z9 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/decoder.vhd|
+Z10 !s107 C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/decoder.vhd|
+!i113 1
+Z11 o-work work -2002 -explicit
+Z12 tExplicit 1 CvgOpt 0
+Abehav
+R1
+R2
+DEx4 work 7 decoder 0 22 9Q:d;@M8DY8CJV4h;0lKz3
+!i122 969
+l20
+L17 55
+V@9KY=;2f29oIkl3]QIABG3
+!s100 F2QJQj;JDm0lDfL4jLSB63
+R6
+32
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
+R12
+Eencoder
+Z13 w1592816250
+R1
+R2
+!i122 970
+R3
+Z14 8C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/encoder.vhd
+Z15 FC:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/encoder.vhd
+l0
+L6 1
+VHTgiQmZe=hdNnn4I?<KA@3
+!s100 VI=l]De>XMQbKY_XEA3PT3
+R6
+32
+R7
+!i10b 1
+R8
+Z16 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/encoder.vhd|
+Z17 !s107 C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/encoder.vhd|
+!i113 1
+R11
+R12
+Abehaviour
+R1
+R2
+DEx4 work 7 encoder 0 22 HTgiQmZe=hdNnn4I?<KA@3
+!i122 970
+l37
+L15 51
+VKELlBo@m3J3NIz_HPoOOL3
+!s100 USJDFMm0JC;oL[d^m_V]U3
+R6
+32
+R7
+!i10b 1
+R8
+R16
+R17
+!i113 1
+R11
+R12
+Emotor
+Z18 w1592918972
+Z19 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+R1
+R2
+!i122 971
+R3
+Z20 8C:\Users\e_dia\Nextcloud\Documents\ESL\git\EmSysLab-20192B\Chapter 6\ModelSim\motor.vhd
+Z21 FC:\Users\e_dia\Nextcloud\Documents\ESL\git\EmSysLab-20192B\Chapter 6\ModelSim\motor.vhd
+l0
+L7 1
+VLjNVfh@8hQ8;bYoIMA_6e3
+!s100 boLPLe^3UagZn?HofTi[@1
+R6
+32
+R7
+!i10b 1
+R8
+Z22 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\e_dia\Nextcloud\Documents\ESL\git\EmSysLab-20192B\Chapter 6\ModelSim\motor.vhd|
+Z23 !s107 C:\Users\e_dia\Nextcloud\Documents\ESL\git\EmSysLab-20192B\Chapter 6\ModelSim\motor.vhd|
+!i113 1
+R11
+R12
+Abehav
+R19
+R1
+R2
+DEx4 work 5 motor 0 22 LjNVfh@8hQ8;bYoIMA_6e3
+!i122 971
+l40
+L23 42
+VVf3DfM;OY]1i^9ho65EGN1
+!s100 ^:O>RJP089aH=UFaj3?KF1
+R6
+32
+R7
+!i10b 1
+R8
+R22
+R23
+!i113 1
+R11
+R12
+Emotor_stim
+R0
+R19
+R1
+R2
+!i122 972
+R3
+Z24 8C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor_stim.vhd
+Z25 FC:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor_stim.vhd
+l0
+L7 1
+VbV7CNol:5Tibnc`L=J22A1
+!s100 fbX0dWTD2TUMd;aOWWmV=3
+R6
+32
+R7
+!i10b 1
+R8
+Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor_stim.vhd|
+Z27 !s107 C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor_stim.vhd|
+!i113 1
+R11
+R12
+Abehav
+R19
+R1
+R2
+DEx4 work 10 motor_stim 0 22 bV7CNol:5Tibnc`L=J22A1
+!i122 972
+l13
+L11 28
+VBNP`N=cg>W6?^=`c]_HRb1
+!s100 0VELkcl:oB2bA]Q_9=mTU0
+R6
+32
+R7
+!i10b 1
+R8
+R26
+R27
+!i113 1
+R11
+R12
+Emotor_tb
+R0
+R1
+R2
+!i122 973
+R3
+Z28 8C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor_tb.vhd
+Z29 FC:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor_tb.vhd
+l0
+L6 1
+V3h:RiO8JQ7BZElIC3`lU_2
+!s100 X1i2747SY??>1X2:ISV6A2
+R6
+32
+Z30 !s110 1592919497
+!i10b 1
+R8
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor_tb.vhd|
+Z32 !s107 C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/motor_tb.vhd|
+!i113 1
+R11
+R12
+Astruct
+R1
+R2
+DEx4 work 8 motor_tb 0 22 3h:RiO8JQ7BZElIC3`lU_2
+!i122 973
+l25
+L10 25
+VoYhahSl40UDCgbDn`^`;j1
+!s100 j_]i`]7nSeT0DY56;P_cG1
+R6
+32
+R30
+!i10b 1
+R8
+R31
+R32
+!i113 1
+R11
+R12
+Epid
+Z33 w1592919491
+R19
+R1
+R2
+!i122 974
+R3
+Z34 8C:\Users\e_dia\Nextcloud\Documents\ESL\git\EmSysLab-20192B\Chapter 6\ModelSim\pid.vhd
+Z35 FC:\Users\e_dia\Nextcloud\Documents\ESL\git\EmSysLab-20192B\Chapter 6\ModelSim\pid.vhd
+l0
+L5 1
+VJIEA_PQHD^lDH:TgAZ?303
+!s100 Y@b9i=O?4zOOIgY<n?j]61
+R6
+32
+R30
+!i10b 1
+Z36 !s108 1592919497.000000
+Z37 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\e_dia\Nextcloud\Documents\ESL\git\EmSysLab-20192B\Chapter 6\ModelSim\pid.vhd|
+Z38 !s107 C:\Users\e_dia\Nextcloud\Documents\ESL\git\EmSysLab-20192B\Chapter 6\ModelSim\pid.vhd|
+!i113 1
+R11
+R12
+Artl
+R19
+R1
+R2
+DEx4 work 3 pid 0 22 JIEA_PQHD^lDH:TgAZ?303
+!i122 974
+l33
+L18 79
+VUQ0dj>Xg<z;^^m:6LAKRH1
+!s100 aGb8_2?nhTjkZT:57YdSb3
+R6
+32
+R30
+!i10b 1
+R36
+R37
+R38
+!i113 1
+R11
+R12
+Eplant
+Z39 w1592919183
+R19
+R1
+R2
+!i122 975
+R3
+Z40 8C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant.vhd
+Z41 FC:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant.vhd
+l0
+L6 1
+VnVjC_DTFk^LGbUed5mZ_a2
+!s100 b;Lkz0=J=E2aXe;h;dbHK2
+R6
+32
+R30
+!i10b 1
+R36
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant.vhd|
+Z43 !s107 C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant.vhd|
+!i113 1
+R11
+R12
+Astruct
+R19
+R1
+R2
+DEx4 work 5 plant 0 22 nVjC_DTFk^LGbUed5mZ_a2
+!i122 975
+l116
+L13 124
+VB>T9f_f:h7DN7K4W8IAFY2
+!s100 M>_iE64]GYFEC5DjOFFXD2
+R6
+32
+R30
+!i10b 1
+R36
+R42
+R43
+!i113 1
+R11
+R12
+Eplant_stim
+Z44 w1592918431
+R1
+R2
+!i122 976
+R3
+Z45 8C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant_stim.vhd
+Z46 FC:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant_stim.vhd
+l0
+L5 1
+VY731a`Z1ADbDb[5>QENQA3
+!s100 =L;]EM8Md3VaBA=cRdT1_0
+R6
+32
+R30
+!i10b 1
+R36
+Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant_stim.vhd|
+Z48 !s107 C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/plant_stim.vhd|
+!i113 1
+R11
+R12
+Abehav
+R1
+R2
+DEx4 work 10 plant_stim 0 22 Y731a`Z1ADbDb[5>QENQA3
+!i122 976
+l15
+L13 32
+V_ZYj5TbGCd<RjFRm?dB6g1
+!s100 HIQL:]gXmiP3RzbNl0]ah3
+R6
+32
+R30
+!i10b 1
+R36
+R47
+R48
+!i113 1
+R11
+R12
+Epwm
+R0
+Z49 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z50 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+R1
+R2
+!i122 977
+R3
+Z51 8C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pwm.vhd
+Z52 FC:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pwm.vhd
+l0
+L5 1
+VJ9ZdIV2LH1Ba8ic4G>93<3
+!s100 <d]VNi@g7UOLBEQ:6Z5I@1
+R6
+32
+R30
+!i10b 1
+R36
+Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pwm.vhd|
+Z54 !s107 C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pwm.vhd|
+!i113 1
+R11
+R12
+Aarch
+R49
+R50
+R1
+R2
+DEx4 work 3 pwm 0 22 J9ZdIV2LH1Ba8ic4G>93<3
+!i122 977
+l27
+L22 30
+V3GfVG2ZBkESEGOjIFg=4N0
+!s100 4gbAXY8ZBc3WHPlAnIC]S0
+R6
+32
+R30
+!i10b 1
+R36
+R53
+R54
+!i113 1
+R11
+R12
+Epwmdecoder
+Z55 w1592917650
+R19
+R49
+R50
+R1
+R2
+!i122 978
+R3
+Z56 8C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pwmdecoder.vhd
+Z57 FC:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pwmdecoder.vhd
+l0
+L6 1
+VZ`E@7Oc;jdYk^RC[LG:8b2
+!s100 @[@5gDLdo@HL1dbZebo5Z1
+R6
+32
+Z58 !s110 1592919498
+!i10b 1
+R36
+Z59 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pwmdecoder.vhd|
+Z60 !s107 C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/pwmdecoder.vhd|
+!i113 1
+R11
+R12
+Artl
+R19
+R49
+R50
+R1
+R2
+DEx4 work 10 pwmdecoder 0 22 Z`E@7Oc;jdYk^RC[LG:8b2
+!i122 978
+l25
+L21 22
+VVVF33FK_hP]0e0B7hE0900
+!s100 >k?E<SX`00K9A9M_e6UjH1
+R6
+32
+R58
+!i10b 1
+R36
+R59
+R60
+!i113 1
+R11
+R12
+Ewheel
+R0
+R19
+R1
+R2
+!i122 979
+R3
+Z61 8C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/wheel.vhd
+Z62 FC:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/wheel.vhd
+l0
+L6 1
+VAICPzAC[cQ[N9TCdcW4Nm2
+!s100 :06ko>zJBc:j8:UY683VU2
+R6
+32
+R58
+!i10b 1
+Z63 !s108 1592919498.000000
+Z64 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/wheel.vhd|
+Z65 !s107 C:/Users/e_dia/Nextcloud/Documents/ESL/git/EmSysLab-20192B/Chapter 6/ModelSim/wheel.vhd|
+!i113 1
+R11
+R12
+Abehav
+R19
+R1
+R2
+Z66 DEx4 work 5 wheel 0 22 AICPzAC[cQ[N9TCdcW4Nm2
+!i122 979
+l15
+Z67 L14 23
+Z68 V^Iiglf37l6lPZFWPlgnoh2
+Z69 !s100 =z]Q;>T:`<BQ47fY:Am?@0
+R6
+32
+R58
+!i10b 1
+R63
+R64
+R65
+!i113 1
+R11
+R12
